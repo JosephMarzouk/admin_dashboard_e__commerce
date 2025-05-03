@@ -1,7 +1,6 @@
 import 'package:admin_dashboard_e__commerce/core/components/cahchedImage.dart';
 import 'package:admin_dashboard_e__commerce/core/components/customElevatedButton.dart';
 import 'package:admin_dashboard_e__commerce/core/functions/navigateTo.dart';
-import 'package:admin_dashboard_e__commerce/features/Home/data/models/productmodel.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/commentsView.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/edit_product_view.dart';
 import 'package:flutter/material.dart';

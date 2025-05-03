@@ -2,8 +2,8 @@ import 'package:admin_dashboard_e__commerce/core/components/customElevatedButton
 import 'package:admin_dashboard_e__commerce/core/functions/buid_custom_appbar.dart';
 import 'package:admin_dashboard_e__commerce/core/functions/navigateTo.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/AddAdminView.dart';
-import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/AddProductsView.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/ProductsView.dart';
+import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/addproductview.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
