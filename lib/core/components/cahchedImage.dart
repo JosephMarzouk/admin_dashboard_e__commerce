@@ -7,15 +7,18 @@ class CaheImage extends StatelessWidget {
   const CaheImage({
     super.key,
     required this.url,
+    required this.height,
+    required this.width,
   });
-
+  final double height;
+  final double width;
   final String url;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       fit: BoxFit.cover,
-      height: 250,
-      width: double.infinity,
+      height: height,
+      width: width,
       imageUrl: url,
       placeholder: (context, url) => const SizedBox(
         height: 200,
