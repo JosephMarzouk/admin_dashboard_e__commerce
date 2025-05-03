@@ -1,5 +1,5 @@
 import 'package:admin_dashboard_e__commerce/features/Auth/presentation/Views/LoginView.dart';
-import 'package:admin_dashboard_e__commerce/features/Home/presentation/HomeView.dart';
+import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/HomeView.dart';
 import 'package:flutter/material.dart';
 
 void main() {

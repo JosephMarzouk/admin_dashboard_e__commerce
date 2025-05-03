@@ -2,6 +2,8 @@ import 'package:admin_dashboard_e__commerce/core/components/cahchedImage.dart';
 import 'package:admin_dashboard_e__commerce/core/components/customElevatedButton.dart';
 import 'package:admin_dashboard_e__commerce/core/functions/navigateTo.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/data/models/productmodel.dart';
+import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/commentsView.dart';
+import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/edit_product_view.dart';
 import 'package:flutter/material.dart';
 
 class CustomProductCard extends StatelessWidget {
@@ -55,7 +57,9 @@ class CustomProductCard extends StatelessWidget {
                 ),
                 CustomElevatedButton(
                   child: const Icon(Icons.edit),
-                  onPressed: () {},
+                  onPressed: () {
+                    navigateTo(context, EditProductView());
+                  },
                 ),
               ],
             ),
@@ -87,7 +91,9 @@ class CustomProductCard extends StatelessWidget {
                 ),
                 CustomElevatedButton(
                   child: const Icon(Icons.comment),
-                  onPressed: () {},
+                  onPressed: () {
+                    navigateTo(context, CommentsView());
+                  },
                 ),
               ],
             ),
