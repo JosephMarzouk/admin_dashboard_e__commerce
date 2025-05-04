@@ -35,7 +35,7 @@ class ApiService {
 
   final Dio _dioAuth = Dio(
     BaseOptions(
-      baseUrl: "https://itjstiahcigzhbrwggfz.supabase.co/auth/v1/",
+      baseUrl: "https://asbxvyaxvraxpevngyjy.supabase.co/auth/v1/",
       headers: {
         "apiKey":
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzYnh2eWF4dnJheHBldm5neWp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4NjMzMDQsImV4cCI6MjA1OTQzOTMwNH0.Z4LXgVoUqucTJ_Ggu-VYeNcB7HVveGIYoA1cPMRI1jE",
