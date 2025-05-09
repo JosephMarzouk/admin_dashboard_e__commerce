@@ -11,26 +11,27 @@ class ApiService {
     ),
   );
 
-  Future<Response> getData(String path) async {
-    return await _dio.get(path);
+    Future<Response> getData(String path, ) async {
+    return await _dio.get(path,
+        );
   }
 
-  Future<Response> postData(String path, Map<String, dynamic> data) async {
-    return await _dio.post(
-      path,
-      data: data,
-    );
+  Future<Response> postData(String path, Map<String, dynamic> data , String? token) async {
+    return await _dio.post(path, data: data, options: Options(headers: {
+          "Authorization": "Bearer $token",
+        }));
   }
 
-  Future<Response> patchData(String path, Map<String, dynamic> data) async {
-    return await _dio.patch(
-      path,
-      data: data,
-    );
+  Future<Response> patchData(String path, Map<String, dynamic> data , String? token) async {
+    return await _dio.patch(path, data: data , options: Options(headers: {
+          "Authorization": "Bearer $token",
+        }));
   }
 
-  Future<Response> deleteData(String path) async {
-    return await _dio.delete(path);
+  Future<Response> deleteData(String path , String? token) async {
+    return await _dio.delete(path, options: Options(headers: {
+          "Authorization": "Bearer $token",
+        }));
   }
 
   final Dio _dioAuth = Dio(

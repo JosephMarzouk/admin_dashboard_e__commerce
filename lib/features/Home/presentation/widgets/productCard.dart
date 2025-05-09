@@ -1,16 +1,17 @@
 import 'package:admin_dashboard_e__commerce/core/components/cahchedImage.dart';
 import 'package:admin_dashboard_e__commerce/core/components/customElevatedButton.dart';
 import 'package:admin_dashboard_e__commerce/core/functions/navigateTo.dart';
+import 'package:admin_dashboard_e__commerce/features/Home/data/models/productmodel.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/commentsView.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/edit_product_view.dart';
 import 'package:flutter/material.dart';
 
 class CustomProductCard extends StatelessWidget {
   const CustomProductCard({
-    super.key, this.deleteProduct,
+    super.key, this.deleteProduct, required this.product,
   });
   
-  //final ProductModel product;
+  final ProductModel product;
   final void Function()? deleteProduct;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class CustomProductCard extends StatelessWidget {
               height: 150,
               width: 200,
               url:
-                 // product.imageUrl ??
+                  product.imageUrl ??
                    "https://img.freepik.com/free-photo/sale-with-special-discount-vr-glasses_23-2150040380.jpg?t=st=1736199951~exp=1736203551~hmac=4002ca903018a0edb3f886536eb961659f89a39eb31ee90a093c352ac11e5912&w=826",
             ),
             const SizedBox(
@@ -34,7 +35,7 @@ class CustomProductCard extends StatelessWidget {
             Column(
               children: [
                  Text(
-                 // product.productName ?? 
+                  product.productName ?? 
                   "Product Name",
                   style:const TextStyle(
                     fontSize: 22,
@@ -45,7 +46,7 @@ class CustomProductCard extends StatelessWidget {
                   height: 10,
                 ),
                  Text(
-                 // product.description ??
+                  product.description ??
                    "Product Description",
                   style:const TextStyle(
                     fontSize: 18,
@@ -57,7 +58,7 @@ class CustomProductCard extends StatelessWidget {
                 CustomElevatedButton(
                   child: const Icon(Icons.edit),
                   onPressed: () {
-                    navigateTo(context, EditProductView());
+                    navigateTo(context, EditProductView( product: product,));
                   },
                 ),
               ],
@@ -68,7 +69,7 @@ class CustomProductCard extends StatelessWidget {
             Column(
               children: [
                  Text(
-                 // product.price ?? 
+                  product.price ?? 
                   "Product Price",
                   style:const TextStyle(
                     fontSize: 22,
@@ -79,8 +80,8 @@ class CustomProductCard extends StatelessWidget {
                   height: 10,
                 ),
                  Text(
-                  //"${product.sale}",
-                  "Product Sale",
+                  "${product.sale}",
+                 
                   style:const TextStyle(
                     fontSize: 18,
                   ),
