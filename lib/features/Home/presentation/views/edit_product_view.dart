@@ -5,6 +5,7 @@ import 'package:admin_dashboard_e__commerce/core/components/customElevatedButton
 import 'package:admin_dashboard_e__commerce/core/components/customTextField.dart';
 import 'package:admin_dashboard_e__commerce/core/functions/buid_custom_appbar.dart';
 import 'package:admin_dashboard_e__commerce/core/functions/navigateWIthoutBack.dart';
+import 'package:admin_dashboard_e__commerce/core/functions/pick_image.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/data/cubit/product_cubit.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/data/models/productmodel.dart';
 import 'package:admin_dashboard_e__commerce/features/Home/presentation/views/HomeView.dart';
@@ -119,27 +120,27 @@ class _EditProductViewState extends State<EditProductView> {
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
                           child: CustomElevatedButton(
                             onPressed: 
-                            (){},
-                            // state is UploadImageLoading
-                            //     ? null
-                            //     : () async {
-                            //         cubit.editProduct(
-                            //             productId: widget.product.productId!,
-                            //             data: {
-                            //               "product_name":
-                            //                   _productNameController.text,
-                            //               "price": _newPriceController.text,
-                            //               "old_price": _oldPriceController.text,
-                            //               "sale": discount,
-                            //               "description":
-                            //                   _productDescriptionController
-                            //                       .text,
-                            //               "category": selectedValue,
-                            //               "image_url": cubit.imageUrl.isEmpty
-                            //                   ? widget.product.imageUrl
-                            //                   : cubit.imageUrl
-                            //             });
-                            //       },
+                           
+                            state is UploadImageLoading
+                                ? null
+                                : () async {
+                                    cubit.editProduct(
+                                        productId: widget.product.productId!,
+                                        data: {
+                                          "product_name":
+                                              _productNameController.text,
+                                          "price": _newPriceController.text,
+                                          "old_price": _oldPriceController.text,
+                                          "sale": discount,
+                                          "description":
+                                              _productDescriptionController
+                                                  .text,
+                                          "category": selectedValue,
+                                          "image_url": cubit.imageUrl.isEmpty
+                                              ? widget.product.imageUrl
+                                              : cubit.imageUrl
+                                        });
+                                  },
                             
                             child: const Padding(
                               padding: EdgeInsets.all(8.0),
@@ -195,25 +196,35 @@ class _EditProductViewState extends State<EditProductView> {
               children: [
                 CustomElevatedButton(
                   child: const Icon(Icons.image),
-                  onPressed:(){},
+                  onPressed:
                   
-                  //  () async {
-                  //   await pickImage().then((value) {
-                  //     if (value != null) {
-                  //       setState(() {
-                  //         _imageName = value.files.first.name;
-                  //         Uint8List? bytes = value.files.first.bytes;
-                  //         _selectedImage = bytes;
-                  //       });
-                  //     }
-                  //   });
-                  // },
+                   () async {
+                    await pickImage().then((value) {
+                      if (value != null) {
+                        setState(() {
+                          _imageName = value.files.first.name;
+                          Uint8List? bytes = value.files.first.bytes;
+                          _selectedImage = bytes;
+                        });
+                      }
+                    });
+                  },
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 CustomElevatedButton(
-                  onPressed: (){},
+                  onPressed: state is UploadImageLoading
+                      ? null
+                      : () async {
+                          if (_selectedImage != null) {
+                            await cubit.uploadImage(
+                              image: _selectedImage!,
+                              imageName: _imageName,
+                              bucketName: "images",
+                            );
+                          }
+                        },
                   child: const Icon(
                     Icons.upload_file_rounded,
                   ),

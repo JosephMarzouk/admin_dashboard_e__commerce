@@ -18,6 +18,8 @@ class LoginCubit extends Cubit<LoginState> {
       Response response = await _apiServices.login("token", data);
       if (response.statusCode == 200) {
         await SharedPref.saveToken(response.data["access_token"]);
+        print(response);
+        
         emit(LoginSuccess());
       } else {
         emit(LoginError(msgError: response.data["msg"]));

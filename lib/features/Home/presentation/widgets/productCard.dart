@@ -16,7 +16,7 @@ class CustomProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
+     // height: 150,
       child: Card(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,13 +45,18 @@ class CustomProductCard extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                 Text(
-                  product.description ??
-                   "Product Description",
-                  style:const TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
+                 SizedBox(
+                  width: 400,
+                   child: Text(
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                    product.description ??
+                     "Product Description",
+                    style:const TextStyle(
+                      fontSize: 18,
+                    ),
+                                   ),
+                 ),
                 const SizedBox(
                   height: 10,
                 ),

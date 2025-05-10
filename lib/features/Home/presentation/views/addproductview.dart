@@ -6,7 +6,6 @@ import 'package:admin_dashboard_e__commerce/core/components/customTextField.dart
 import 'package:admin_dashboard_e__commerce/core/functions/buid_custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddProductView extends StatefulWidget {
   const AddProductView({super.key});

@@ -58,19 +58,21 @@ class _LoginViewState extends State<LoginView> {
                       controller: passwordController,
                       isPassword: true,
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                                context.read<LoginCubit>().login({
-                                  "email": emailController.text,
-                                  "password": passwordController.text
-                                });
-                              }
+                        
                       },
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     CustomElevatedButton(
-                        child: const Text("Login"), onPressed: () {}),
+                        child: const Text("Login"), onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                                context.read<LoginCubit>().login({
+                                  "email": emailController.text,
+                                  "password": passwordController.text
+                                });
+                              }
+                        }),
                   ],
                 ),
               ),

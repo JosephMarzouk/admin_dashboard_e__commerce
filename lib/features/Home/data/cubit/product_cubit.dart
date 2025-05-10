@@ -31,49 +31,50 @@ class ProductCubit extends Cubit<ProductState> {
     }
   }
 
-  // // upload image to supabase storage
-  // String imageUrl = "https://img.freepik.com/free-photo/sale-with-special-discount-vr-glasses_23-2150040380.jpg?t=st=1736199951~exp=1736203551~hmac=4002ca903018a0edb3f886536eb961659f89a39eb31ee90a093c352ac11e5912&w=826";
-  // Future<void> uploadImage(
-  //     {required Uint8List image,
-  //     required String imageName,
-  //     required String bucketName}) async {
-  //   emit(UploadImageLoading());
-  //   const String _storageBaseUrl =
-  //       "https://itjstiahcigzhbrwggfz.supabase.co/storage/v1/object";
-  //   const String apiKey = anonKey;
-  //   final String? token = await SharedPref.getToken();
-  //   final String uploadUrl = "$_storageBaseUrl/$bucketName/$imageName";
-  //   final Dio _dio = Dio();
-  //   FormData formData = FormData.fromMap({
-  //     "file": MultipartFile.fromBytes(
-  //       image,
-  //       filename: imageName,
-  //     ),
-  //   });
-  //   try {
-  //     Response response = await _dio.post(
-  //       data: formData,
-  //       uploadUrl,
-  //       options: Options(
-  //         headers: {
-  //           "apiKey": apiKey,
-  //           "Authorization": "Bearer $token",
-  //           "Content-Type": "multipart/form-data"
-  //         },
-  //       ),
-  //     );
-  //     if (response.statusCode == 200) {
-  //       imageUrl =
-  //           "https://itjstiahcigzhbrwggfz.supabase.co/storage/v1/object/public/${response.data["Key"]}";
-  //       emit(UploadImageSuccess());
-  //     } else {
-  //       emit(UploadImageError());
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //     emit(UploadImageError());
-  //   }
-  // }
+  // upload image to supabase storage
+  String imageUrl = "https://img.freepik.com/free-photo/sale-with-special-discount-vr-glasses_23-2150040380.jpg?t=st=1736199951~exp=1736203551~hmac=4002ca903018a0edb3f886536eb961659f89a39eb31ee90a093c352ac11e5912&w=826";
+  Future<void> uploadImage(
+      {required Uint8List image,
+      required String imageName,
+      required String bucketName}) async {
+    emit(UploadImageLoading());
+    const String _storageBaseUrl =
+        "https://asbxvyaxvraxpevngyjy.supabase.co/storage/v1/object";
+    const String apiKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFzYnh2eWF4dnJheHBldm5neWp5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4NjMzMDQsImV4cCI6MjA1OTQzOTMwNH0.Z4LXgVoUqucTJ_Ggu-VYeNcB7HVveGIYoA1cPMRI1jE";
+    final String? token = await SharedPref.getToken();
+    print(token);
+    final String uploadUrl = "$_storageBaseUrl/$bucketName/$imageName";
+    final Dio _dio = Dio();
+    FormData formData = FormData.fromMap({
+      "file": MultipartFile.fromBytes(
+        image,
+        filename: imageName,
+      ),
+    });
+    try {
+      Response response = await _dio.post(
+        data: formData,
+        uploadUrl,
+        options: Options(
+          headers: {
+            "apiKey": apiKey,
+            "Authorization": "Bearer $token",
+            "Content-Type": "multipart/form-data"
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        imageUrl =
+            "https://asbxvyaxvraxpevngyjy.supabase.co/storage/v1/object/public/${response.data["Key"]}";
+        emit(UploadImageSuccess());
+      } else {
+        emit(UploadImageError());
+      }
+    } catch (e) {
+      print(e.toString());
+      emit(UploadImageError());
+    }
+  }
 
   // edit product
   Future<void> editProduct(
