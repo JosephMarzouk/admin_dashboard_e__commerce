@@ -106,7 +106,7 @@ class ProductCubit extends Cubit<ProductState> {
       await _apiServices.deleteData(
           "comments_table?for_product=eq.$productId", token); // delete the related rate for this product
       await _apiServices.deleteData(
-          "purchase_table?for_product=eq.$productId", token); // delete the related purchase for this product
+          "purchesed_products_table?for_product=eq.$productId", token); // delete the related purchase for this product
       await _apiServices.deleteData(
           "rates_table?for_product=eq.$productId", token); // delete the related rate for this product
      

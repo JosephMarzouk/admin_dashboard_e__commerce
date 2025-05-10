@@ -85,7 +85,7 @@ class CustomProductCard extends StatelessWidget {
                   height: 10,
                 ),
                  Text(
-                  "${product.sale}",
+                  "${product.sale}%",
                  
                   style:const TextStyle(
                     fontSize: 18,
